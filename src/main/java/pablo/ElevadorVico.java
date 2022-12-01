@@ -12,7 +12,16 @@ import org.apache.commons.lang3.RandomStringUtils;
  * @author pablo
  */
 public class ElevadorVico {
-
+    
+    
+    //Atributos de clase
+    //Se incializan aqi arriba y se pueden usar.
+    public static final double PESO_MAXIMO =800;
+    public static final double PESO_MINIMO =0;
+    public static final int PLANTA_BAJA=0;
+    public static final int PLANTA_MAX=8;
+    
+    //Atributos de instancia
     private String numero;
     private String fabricante;
     private int capacidadMaxima;
@@ -27,11 +36,11 @@ public class ElevadorVico {
         this.numero = generarNumeroSerie();
         this.fabricante = fabricante;
         //Condicionas se ponen directamente en el constructor!!!!!!!!!!!!
-        if (capacidadMaxima >= 0 && capacidadMaxima <= 10) {
+        if (capacidadMaxima >= PESO_MINIMO && capacidadMaxima <= 10) {
             this.capacidadMaxima = capacidadMaxima;
         }
         //MAS CONDICIONES
-        if (pesoSoportado >= 0 && pesoSoportado <= 800) {
+        if (pesoSoportado >= PESO_MINIMO && pesoSoportado <= 800) {
             this.pesoSoportado = pesoSoportado;
         }
         //Se puede llamar la fecha directamente al constructor
@@ -144,7 +153,7 @@ public class ElevadorVico {
                 //Compruebo la planta valida
                 //Si la planta es diferente que la planta que YO le pongo, y 
                 // el muumero de planta esta entre 0 y 8 
-                if (numPlanta != this.planta && numPlanta >= 0 && numPlanta <= 8) {
+                if (numPlanta != this.planta && numPlanta >= 0 && numPlanta <= PLANTA_MAX) {
                     if (this.planta > numPlanta) {
                         //Se cambian los string por el Enum.su caracteristica
                         this.estado = Estado.BAJANDO;
